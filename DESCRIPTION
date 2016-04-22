@@ -8,3 +8,4 @@ Maintainer: Eric Kramer <eric.kramer@dataiku.com>
 Description: Bringing the pipe to logging since 2016
 License: GPL
 LazyData: TRUE
+RoxygenNote: 5.0.1

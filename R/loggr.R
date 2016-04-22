@@ -1,22 +1,56 @@
-loggr <- function(.,
-                  ...,
-                  flags = NULL,
-                  level = 0,
-                  timestamp = TRUE){
+#' Write a log message
+#'
+#' A pipeable function for logging. The first argument is passed
+#' through the function unchanged, allowing loggr to be used
+#'
+#' @param x An object.
+#' @param ... Expressions to be logged.
+#' @param .flags A character vector. These flags are added to the logging statement.
+#' loggr_flags can be used to set this variable globally
+#' @param .level A integer. Specifies the importance of log. loggr_level
+#' sets the global importance level.Only statements with a level above the global level are
+#' logged
+#' @param .file A character string or a file connection. If NULL, statements are
+#' printed to standard output connection
+#' @param .timestamp A boolean. Whether to include a timestamp in the logging statement.
+#'
+#' @examples
+#'
+#' iris_filtered = iris %>%
+#'  loggr("I see you have, nrow(.), "rows") %>%
+#'  filter(Species == "setosa") %>%
+#'  loggr("And now you have, nrow(.), "rows")
+#'
+#' x = rnorm(100) %>%
+#'  loggr(length(.), "samples drawn", .flags=c("flag1", "flag2")) %>%
+#'
+#' loggr_level(5)
+#'
+#' y = x %>%
+#'  loggr("This log isn't so important", .level = 1) %>%
+#'  max %>%
+#'  loggr("But maybe this one is", .level = 10)
+#'
+#' @export
 
-  if(level >= level()){
+loggr <- function(x,
+                  ...,
+                  .flags = NULL,
+                  .level = 0,
+                  .file = NULL,
+                  .timestamp = TRUE){
+
+  if(.level >= loggr_level()){
 
     opt = ""
-    if(timestamp){
-      opt = paste0("[", date(), "]")
+    if(.timestamp){
+      opt = paste0("[", Sys.time(), "]")
     }
 
-    # if no flags provided, use defaults
-    if(is.null(flags)){
-      flags = flags()
-    }
+    # add global flags
+    .flags = c(loggr_flags(), .flags)
 
-    if(!is.null(flags)){
+    if(!is.null(.flags)){
       paste_bracket = function(...) paste(..., sep="] [")
 
       flag_string = do.call(paste_bracket, as.list(flags))
@@ -37,9 +71,9 @@ loggr <- function(.,
 
     if(opt != ""){
       opt = paste0(opt, "\n")
-      cat(opt, file=conn_())
+      cat(opt, file=conn())
     } else warn("No message to log")
   }
 
-  .
+  x
 }
