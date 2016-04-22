@@ -53,7 +53,7 @@ loggr <- function(x,
     if(!is.null(.flags)){
       paste_bracket = function(...) paste(..., sep="] [")
 
-      flag_string = do.call(paste_bracket, as.list(flags))
+      flag_string = do.call(paste_bracket, as.list(.flags))
       flag_string = paste0("[", flag_string, "]")
 
       opt = if(opt != ""){

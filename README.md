@@ -40,7 +40,7 @@ iris_filtered = iris %>%
 Add flags to your logs.
 ```r
 iris_filtered = iris %>%
-    loggr("Look at these logs!", .flags=c("flag1", "flag2") %>%
+    loggr("Look at these logs!", .flags=c("flag1", "flag2")) %>%
     filter(Species == "setosa")
 ```
 
