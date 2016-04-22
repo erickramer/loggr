@@ -7,6 +7,7 @@
 #'
 #' @seealso \code{\link{loggr}}
 #'
+#' @export
 
 loggr_level <- function(level=NULL){
   if(!is.null(level)){

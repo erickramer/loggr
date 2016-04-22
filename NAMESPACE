@@ -3,4 +3,5 @@
 export(close_log)
 export(loggr)
 export(loggr_flags)
+export(loggr_level)
 export(open_log)
