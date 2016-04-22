@@ -1,11 +1,12 @@
 Package: loggr
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Logging functionality
 Version: 0.1
 Date: 2016-04-20
 Author: Eric Kramer
 Maintainer: Eric Kramer <eric.kramer@dataiku.com>
 Description: Bringing the pipe to logging since 2016
-License: GPL
+Depends: magrittr
+License: GPL-3
 LazyData: TRUE
 RoxygenNote: 5.0.1
