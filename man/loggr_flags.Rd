@@ -6,6 +6,9 @@
 \usage{
 loggr_flags(...)
 }
+\arguments{
+\item{...}{Flags to set for \code{\link{loggr}}}
+}
 \description{
 Get or set a vector of flags used for all \code{\link{logger}} calls.
 Call with arguments to set flags. Call without arguments to retrive current flags

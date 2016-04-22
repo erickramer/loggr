@@ -21,7 +21,7 @@ remove_loggr_flags <- function(){
 #' Get or set a vector of flags used for all \code{\link{logger}} calls.
 #' Call with arguments to set flags. Call without arguments to retrive current flags
 #'
-#' @params ... Flags to set for \code{\link{loggr}}
+#' @param ... Flags to set for \code{\link{loggr}}
 #'
 #' @seealso \code{\link{loggr}}, \code{\link{remove_loggr_flags}}
 #'
