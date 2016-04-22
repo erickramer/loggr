@@ -49,7 +49,7 @@ open_log <- function(description = "", open="a", ...){
 close_log <- function(){
 
   if(is_log_open()){
-    close(conn_())
+    close(conn())
   } else warning("No log file open")
 
   options("loggr.connection"="")
@@ -57,7 +57,7 @@ close_log <- function(){
 
 conn <- function(connection=NULL){
   if(any(class(connection) == "connection")){
-    options(loggr.connection=conn)
+    options(loggr.connection=connection)
   } else getOption("loggr.connection")
 }
 
