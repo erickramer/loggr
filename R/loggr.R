@@ -72,7 +72,7 @@ loggr <- function(x,
     if(opt != ""){
       opt = paste0(opt, "\n")
       cat(opt, file=conn())
-    } else warn("No message to log")
+    } else warning("No message to log")
   }
 
   x
