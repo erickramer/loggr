@@ -77,3 +77,16 @@ loggr <- function(x,
 
   x
 }
+
+#' Write a log message
+#'
+#' This writes a log message without an input variable
+#' @param ... Arguments passed to \code{\link{loggr}}
+#' @examples
+#'
+#' loggr0("This is a log statement")
+#'
+#' @export
+
+loggr0 <- function(...) loggr(x = NULL, ...)
+
