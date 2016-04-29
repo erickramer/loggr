@@ -61,9 +61,13 @@ loggr <- function(x,
       } else flag_string
     }
 
-    message = list(...)
+    # trying to deal with lists-of-list
+    # not a good solution
+    message = c(...) %>%
+      unlist
+
     if(length(message) > 0){
-      message = do.call(paste, message)
+      message = do.call(paste, as.list(message))
       opt = if(opt != ""){
         paste(opt, message)
       } else message
@@ -90,3 +94,15 @@ loggr <- function(x,
 
 loggr0 <- function(...) loggr(x = NULL, ...)
 
+
+#' Log the structure of an object
+#'
+#' @param x An R object
+#' @param ... Additional arguments passed to \code{\link{loggr}}
+#' @export
+#'
+
+log_str <- function(x, ...){
+  x %>%
+    loggr(str(.), ...)
+}
